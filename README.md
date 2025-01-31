@@ -28,8 +28,8 @@ This is the backend for the **Parking Finder** application, a **MERN stack proje
 
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-username/parking-finder-backend.git
-cd parking-finder-backend
+git clone https://github.com/Andn1ght/parking-backend.git
+cd .\server\
 ```
 ## **2️⃣ Install Dependencies**
 ```sh
