@@ -1,6 +1,6 @@
 const ParkingSpot = require("../models/parking.model");
 
-// Create a new parking spot (Only for Admins/Owners)
+// ✅ Create a new parking spot (Only for Admins/Owners)
 const createParkingSpot = async (req, res) => {
     try {
         const { name, coordinates, pricePerHour } = req.body;
@@ -23,7 +23,17 @@ const createParkingSpot = async (req, res) => {
     }
 };
 
-// Get all parking spots near a location
+// ✅ Get all parking spots
+const getAllParkingSpots = async (req, res) => {
+    try {
+        const parkingSpots = await ParkingSpot.find();
+        res.status(200).json(parkingSpots);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+// ✅ Get all nearby parking spots
 const getNearbyParkingSpots = async (req, res) => {
     try {
         const { longitude, latitude, maxDistance = 5000 } = req.query;
@@ -48,7 +58,7 @@ const getNearbyParkingSpots = async (req, res) => {
     }
 };
 
-// Update a parking spot (Only for Admins/Owners)
+// ✅ Update a parking spot (Only for Admins/Owners)
 const updateParkingSpot = async (req, res) => {
     try {
         const { id } = req.params;
@@ -69,7 +79,7 @@ const updateParkingSpot = async (req, res) => {
     }
 };
 
-// Delete a parking spot (Only for Admins/Owners)
+// ✅ Delete a parking spot (Only for Admins/Owners)
 const deleteParkingSpot = async (req, res) => {
     try {
         const { id } = req.params;
@@ -90,4 +100,4 @@ const deleteParkingSpot = async (req, res) => {
     }
 };
 
-module.exports = { createParkingSpot, getNearbyParkingSpots, updateParkingSpot, deleteParkingSpot };
+module.exports = { createParkingSpot, getAllParkingSpots, getNearbyParkingSpots, updateParkingSpot, deleteParkingSpot };
